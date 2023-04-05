@@ -1,0 +1,45 @@
+male(rick).
+male(tom).
+male(john).
+male(tim).
+male(jack).
+female(anna).
+female(nina).
+female(liza).
+female(lily).
+female(jane).
+female(susan).
+female(molly).
+parentOf(rick,nina).
+parentOf(anna,nina).
+parentOf(rick, liza).
+parentOf(anna, liza).
+childOf(lily,nina).
+childOf(jane,nina).
+childOf(susan,nina).
+childOf(lily,tom).
+childOf(jane,tom).
+childOf(susan,tom).
+childOf(molly, liza).
+childOf(tim, liza).
+childOf(jack,liza).
+childOf(molly, john).
+childOf(tim, john).
+childOf(jack,john).
+siblings(lily,jane).
+siblings(jane,susan).
+siblings(lily,susan).
+siblings(molly,tim).
+siblings(tim,jack).
+siblings(molly,jack).
+siblings(liza,nina).
+married(nina,tom).
+married(liza,john).
+
+brotherOf(X,Y):-(male(X),(siblings(X,Y);siblings(Y,X)));(male(X),parentOf(Z,X),parentOf(Z,Y)).
+sisterOf(X,Y):-(female(X),(siblings(X,Y);siblings(Y,X)));(female(X),parentOf(Z,X),parentOf(Z,Y)).
+grandParentOf(X,Y):-childOf(Y,Z), parentOf(X,Z).
+auntOf(X,Y):-(female(X),childOf(Y,Z),(siblings(X,Z);siblings(Z,X)));(female(X),(married(X,Z);married(Z,X)),childOf(Y,W),(siblings(Z,W);siblings(W,Z))).
+uncleOf(X,Y):-male(X),childOf(Y,Z),(siblings(X,Z);siblings(Z,X));(male(X),(married(X,Z);married(Z,X)),childOf(Y,W),(siblings(X,W);siblings(W,X))).
+
+showFamily:- write('My family members are: Rick, Tom, John, Tim, Jack, Anna, Nina, Liza, Lily, Jane, Susan, and Molly.').

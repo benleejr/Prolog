@@ -1,0 +1,3 @@
+guess(X):- X < 420, write('Your guess is lower than the target number.').
+guess(X):- X > 420, write('Your guess is higher thna the target number').
+guess(X):- X =:= 420, write('You guessed correctly!').
