@@ -1,0 +1,3 @@
+sumlist([X|Y],N):-
+sumlist(Y,M),
+N is M + X.

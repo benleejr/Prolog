@@ -1,0 +1,8 @@
+comp2num(X,Y) :- X >= Y, !,
+write(X),
+write(' is greater than or equal to '),
+write(Y)
+comp2num(X,Y) :- X < Y,
+write(X),
+write(' is smaller than '),
+write(Y).
